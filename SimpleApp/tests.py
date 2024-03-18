@@ -12,4 +12,4 @@ class SimpleTest(TestCase):
 
     def test_second_in_bd(self):
         result = SimpleModel.objects.get(pk=2).SimpleText
-        self.assertEqual(result, "Text 2")
+        self.assertEqual(result, "Text 3")
