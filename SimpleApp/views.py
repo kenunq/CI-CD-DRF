@@ -2,7 +2,7 @@ from rest_framework import mixins, viewsets
 
 from SimpleApp.models import SimpleModel
 
-from .serializers import SimpleModelSerizalizer
+from SimpleApp.serializers import SimpleModelSerizalizer
 
 # Create your views here.
 
