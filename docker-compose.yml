@@ -3,8 +3,9 @@ version: '3.8'
 services:
   wsgiserver:
     image: kenun/simple-cd
+    # build: .
     container_name: simple-cd
-    entrypoint: ./docker/backend/web.sh
+    entrypoint: docker/backend/web.sh
     env_file:
       - .env
     ports:
