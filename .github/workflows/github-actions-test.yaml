@@ -1,3 +1,30 @@
+name: GitHub Actions Test
+run-name: ${{ github.actor }} is testing out GutGub Actions
+on: [pull_request]
+jobs:
+  run_unittests:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: ['3.11']
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Tests
+        run: |
+          cd .
+          echo "SECRET_KEY = 'django-insecure-dummy-secret'" > .env
+          python3 manage.py test .
+      
   build:
     needs: [run_unittests]
 
@@ -13,13 +40,7 @@
       - uses: actions/checkout@master
 
       - name: Build image
-        run: docker build -t $LOGIN_AND_REPO_NAME:latest -f dockerfile .
+        run: docker build -t $LOGIN_AND_REPO_NAME:latest -f Dockerfile .
 
       - name: Push image to DockerHub Registry
         run: docker push $LOGIN_AND_REPO_NAME:latest
-
-        run: docker build -t $LOGIN_AND_REPO_NAME:${GITHUB_REF:11} -f Dockerfile .
-
-      - name: Push image to DockerHub Registry
-        run: docker push $LOGIN_AND_REPO_NAME:${GITHUB_REF:11}
-
