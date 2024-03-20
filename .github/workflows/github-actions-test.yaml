@@ -24,3 +24,23 @@ jobs:
           cd .
           echo "SECRET_KEY = 'django-insecure-dummy-secret'" > .env
           python3 manage.py test .
+      
+  build:
+    needs: [run_unittests]
+
+    runs-on: [ubuntu-latest]
+
+    env:
+      LOGIN_AND_REPO_NAME: ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_REPOSITORY_NAME }}
+
+    steps:
+      - name: Login to DockerHub
+        run:  echo ${{ secrets.DOCKER_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
+
+      - uses: actions/checkout@master
+
+      - name: Build image
+        run: docker build -t $LOGIN_AND_REPO_NAME:${GITHUB_REF:11} -f Dockerfile .
+
+      - name: Push image to DockerHub Registry
+        run: docker push $LOGIN_AND_REPO_NAME:${GITHUB_REF:11}
