@@ -7,6 +7,7 @@ def add_sample_data(apps, schema_editor):
     SimpleModel = apps.get_model("SimpleApp", "SimpleModel")
     SimpleModel.objects.create(SimpleText="Text 1")
     SimpleModel.objects.create(SimpleText="Text 2")
+    SimpleModel.objects.create(SimpleText="Text 3")
 
 
 class Migration(migrations.Migration):
