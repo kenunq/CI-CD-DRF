@@ -1,8 +1,11 @@
 version: '3.8'
 
 services:
+  main:
+    image: kenun/simple-cd:latest
+
   wsgiserver:
-    # image: kenun/simple-cd
+    # image: kenun/simple-cd:latest
     build: .
     container_name: simple-cd
     entrypoint: docker/backend/web.sh
@@ -10,6 +13,8 @@ services:
       - .env
     ports:
       - 8000:8000
+    depends_on:
+      - main
     networks:
       - back
   
@@ -17,7 +22,7 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --cleanup simple-cd
+    command: --interval 30 simple-cd
 
 networks:
     back:
