@@ -1,8 +1,13 @@
 version: '3.8'
 
 services:
-  main:
-    image: kenun/simple-cd:latest
+  # main:
+  #   image: kenun/simple-cd:latest
+  #   container_name: simple-cd
+  #   # entrypoint: docker/backend/web.sh
+  #   command: python --version
+  #   env_file:
+  #     - .env
 
   wsgiserver:
     # image: kenun/simple-cd:latest
@@ -13,8 +18,6 @@ services:
       - .env
     ports:
       - 8000:8000
-    depends_on:
-      - main
     networks:
       - back
   
