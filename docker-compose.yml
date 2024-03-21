@@ -14,7 +14,7 @@ services:
       - 8000:8000
     networks:
       - back
-  
+
   watchtower:
     image: containrrr/watchtower
     volumes:
