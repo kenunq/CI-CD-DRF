@@ -1,8 +1,11 @@
 version: '3.8'
 
 services:
-  wsgiserver:
+  main:
     image: kenun/simple-cd:latest
+
+  wsgiserver:
+    # image: kenun/simple-cd:latest
     build: .
     container_name: simple-cd
     entrypoint: docker/backend/web.sh
@@ -10,6 +13,8 @@ services:
       - .env
     ports:
       - 8000:8000
+    depends_on:
+      - main
     networks:
       - back
   
