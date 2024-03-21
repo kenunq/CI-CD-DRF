@@ -1,3 +1,2 @@
 # CI-CD-DRF
-asd
 
