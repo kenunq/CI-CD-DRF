@@ -37,10 +37,13 @@ jobs:
       - name: Login to DockerHub
         run:  echo ${{ secrets.DOCKER_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
 
-      - uses: actions/checkout@v3
-
-	  - name: Test ls
-        run: ls
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        
+      - name: Check ls
+        run: |
+          echo "SECRET_KEY = 'django-insecure-dummy-secret'" > .env
+          ls
 
       - name: Build image
         run: docker build -t $LOGIN_AND_REPO_NAME:latest .
