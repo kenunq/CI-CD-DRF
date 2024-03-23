@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Build image
-        run: docker build -t $LOGIN_AND_REPO_NAME:latest -f Dockerfile .
+        run: docker build -t $LOGIN_AND_REPO_NAME:latest -f dockerfile .
 
       - name: Push image to DockerHub Registry
         run: docker push $LOGIN_AND_REPO_NAME:latest
