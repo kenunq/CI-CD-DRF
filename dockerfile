@@ -12,4 +12,4 @@ COPY requirements.txt /CI-CD-DRF/
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-ADD ./ ./
+ADD . /CI-CD-DRF/
