@@ -40,6 +40,9 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
         
+      - name: Add env
+        run: echo "SECRET_KEY = 'django-insecure-dummy-secret'" > .env
+        
       - name: Check ls
         run: ls
 
