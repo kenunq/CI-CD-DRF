@@ -12,4 +12,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 ADD . /CI-CD-DRF/
 
-RUN chmod 777 docker/backend/web.sh && ls -l docker/backend/
+RUN chmod 777 docker/backend/web.sh
