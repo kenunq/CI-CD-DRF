@@ -34,13 +34,13 @@ jobs:
       LOGIN_AND_REPO_NAME: ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_REPOSITORY_NAME }}
 
     steps:
-      - name: Test ls
-        run: ls
-    
       - name: Login to DockerHub
         run:  echo ${{ secrets.DOCKER_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
 
       - uses: actions/checkout@v3
+
+	  - name: Test ls
+        run: ls
 
       - name: Build image
         run: docker build -t $LOGIN_AND_REPO_NAME:latest .
