@@ -47,7 +47,7 @@ jobs:
         run: ls -a
 
       - name: Build image
-        run: docker build -t $LOGIN_AND_REPO_NAME:latest .
+        run: docker build --no-cache --progress=plain -t kenun/simple-cd:latest .
 
       - name: Push image to DockerHub Registry
-        run: docker push $LOGIN_AND_REPO_NAME:latest
+        run: docker push kenun/simple-cd:latest
