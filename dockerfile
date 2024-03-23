@@ -12,4 +12,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 ADD . /CI-CD-DRF/
 
-RUN ls -a
+RUN l docker/backend/
