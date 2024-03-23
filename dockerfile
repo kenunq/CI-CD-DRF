@@ -12,4 +12,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 ADD . /CI-CD-DRF/
 
+# решение ошибки: unable to start container process: exec: \"docker/backend/web.sh\": permission denied: unknown"
 RUN chmod 777 docker/backend/web.sh
