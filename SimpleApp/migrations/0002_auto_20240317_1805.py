@@ -11,7 +11,7 @@ def add_sample_data(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [
+    dependencies: list[tuple[str, str]] = [
         ("SimpleApp", "0001_initial"),
     ]
 
