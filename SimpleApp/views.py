@@ -1,7 +1,6 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets  # noqa: EXE002
 
 from SimpleApp.models import SimpleModel
-
 from SimpleApp.serializers import SimpleModelSerizalizer
 
 # Create your views here.

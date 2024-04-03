@@ -2,6 +2,55 @@
 line-length = 120
 indent-width = 4
 target-version = "py311"
+select = [
+    "B",
+    "C4",
+    "C9",
+    "E",
+    "F",
+    "T2",
+    "W",
+    "PL",
+    "I",
+    "RUF",
+]
+[tool.ruff.lint]
+# See https://github.com/astral-sh/ruff#rules for error code definitions.
+select = [
+    "ANN", # annotations
+    "B", # bugbear
+    "C4", # comprehensions
+    "COM", # trailing comma
+    "DJ", # Django
+    "DTZ", # naive datetime
+    "E", # style errors
+    "EXE", # shebang
+    "F", # flakes
+    "FLY", # string formatting
+    "G", # logging format
+    "I", # import sorting
+    "INT", # gettext
+    "ISC", # string concatenation
+    "LOG", # logging
+    "N", # naming
+    "PERF", # performance
+    "PGH", # pygrep-hooks
+    "PIE", # miscellaneous
+    "PL", # pylint
+    "PYI", # typing stubs
+    "Q", # quotes
+    "RSE", # raise
+    "RUF", # Ruff
+    "S", # security
+    "SLOT", # __slots__
+    "SIM", # simplify
+    "T10", # debugger
+    "TCH", # type-checking
+    "TID", # tidy imports
+    "UP", # upgrade
+    "W", # style warnings
+    "YTT", # sys.version
+]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -10,10 +59,13 @@ line-ending = "lf"
 
 [tool.black]
 line-length = 120
+target-version = ['py311']
 
 [tool.isort]
 profile = "black"
-line-lenght = 120
+line_length = 120
+py_version=311
+# add_imports = ["import os", "import json"]
 
 [tool.pyright]
 pythonVersion = "3.11"
